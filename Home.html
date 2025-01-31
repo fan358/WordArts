@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Literary Arts</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f8f8;
+            text-align: center;
+        }
+
+        header {
+            padding: 20px;
+            background: #fff;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: 2px solid #000;
+            background: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn.primary {
+            background: #ff6600;
+            color: white;
+            border: none;
+        }
+
+        .gallery .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .features {
+            display: flex;
+            align-items: center;
+            padding: 40px;
+        }
+        .features img {
+            width: 50%;
+            border-radius: 8px;
+        }
+        .feature-texts {
+            text-align: left;
+            padding: 20px;
+        }
+
+        .explore-more {
+            text-align: center;
+            padding: 60px 20px;
+            background: #f8f8f8;
+        }
+
+        .explore-more h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .explore-more p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            color: #555;
+        }
+
+        .explore-more .btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .explore-more .btn.primary {
+            background: #ff6600;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .explore-more .btn.primary:hover {
+            opacity: 0.8;
+        }
+
+        /* Gallery */
+        .gallery .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            text-align: center;
+            padding: 50px;
+            background: #fff;
+        }
+
+        .testimonials h2 {
+            font-size: 26px;
+        }
+
+        .testimonials p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .testimonial {
+            display: flex;
+            background: white;
+            padding: 20px;
+            width: 45%;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .text {
+            text-align: left;
+        }
+
+        .text h4 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .role {
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: #fff;
+            padding: 50px;
+            text-align: center;
+        }
+
+        /* Toggle Button */
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: #eee;
+            border-radius: 20px;
+            padding: 5px;
+            width: 200px;
+            margin: 20px auto;
+        }
+
+        .toggle-container input {
+            display: none;
+        }
+
+        .toggle-label {
+            flex: 1;
+            padding: 10px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            z-index: 2;
+            color: #333;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            background: #ff6600;
+            border-radius: 20px;
+            transition: 0.3s;
+            left: 0;
+        }
+
+        #yearly:checked ~ .toggle-slider {
+            left: 50%;
+        }
+
+        #monthly:checked + label {
+            color: white;
+        }
+
+        #yearly:checked + label {
+            color: white;
+        }
+
+        /* Pricing Cards */
+        .pricing-plans {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .plan {
+            border: 2px solid #ccc;
+            padding: 20px;
+            width: 250px;
+            border-radius: 10px;
+            background: white;
+        }
+
+        .plan h3 {
+            margin-bottom: 10px;
+        }
+
+        .plan p {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .plan ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .plan ul li {
+            padding: 5px 0;
+        }
+
+        .plan button {
+            margin-top: 10px;
+            padding: 10px;
+            background: #ff6600;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Hide Yearly Price by Default */
+        .yearly-price {
+            display: none;
+        }
+
+        /* Show Yearly Prices and Hide Monthly Prices When Yearly is Selected */
+        #yearly:checked ~ .pricing-plans .yearly-price {
+            display: inline;
+        }
+
+        #yearly:checked ~ .pricing-plans .monthly-price {
+            display: none;
+        }
+
+        /* Discover Section */
+        .discover {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 50px;
+            background: white;
+        }
+
+        .content {
+            width: 40%;
+        }
+
+        .content h2 {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .content p {
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .main-btn {
+            background: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .main-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Steps Section */
+        .steps {
+            width: 50%;
+        }
+
+        .step {
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .step h3 {
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .step span {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .white {
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .beige {
+            background: #e7c2a5;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            text-align: center;
+            padding: 50px;
+            background: #fff;
+        }
+
+        .testimonials h2 {
+            font-size: 26px;
+        }
+
+        .testimonials p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .testimonial {
+            display: flex;
+            background: white;
+            padding: 20px;
+            width: 45%;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .text {
+            text-align: left;
+        }
+
+        .text h4 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .role {
+            font-size: 14px;
+            color: #999;
+        }
+
+        footer {
+            background: #0a0a23;
+            color: white;
+            padding: 40px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+            padding-right: 20px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 5px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons i {
+            font-size: 20px;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            background: white;
+            padding: 20px;
+            width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 40px auto;
+        }
+
+        .faq-header, .faq-footer {
+            margin-bottom: 15px;
+        }
+
+        .faq-header h2, .faq-footer h3 {
+            color: #333;
+        }
+
+        .faq-header p, .faq-footer p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .faq-button {
+            background-color: #b65c14;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .accordion {
+            width: 100%;
+            background: #f5f5f5;
+            border: none;
+            padding: 10px;
+            text-align: left;
+            font-size: 16px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .panel {
+            display: none;
+            padding: 10px;
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .ask-question-form {
+            margin-top: 20px;
+        }
+
+        .ask-question-form input, .ask-question-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .ask-question-form button {
+            background-color: #b65c14;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="VisualArts.html">Visual Arts</a></li>
+                <li><a href="PerformingArts.html">Performing Arts</a></li>
+                <li><a href="LiteraryArts.html">Literary Arts</a></li>
+                <li><a href="AboutUs.html">About Us</a></li>
+            </ul>
+            <div class="buttons">
+              <a href="GetStarted.html"><button class="btn">Get Inspired</button></a>
+                <a href="SignUp.html"><button class="btn primary">Join Us</button></a>
+            </div>
+        </nav>
+        <h1>Explore the World of Arts</h1>
+        <p>Immerse yourself in the beauty and creativity of Visual Arts, the captivating performances of Performing Arts, and the enchanting world of Literary Arts.</p>
+        <div class="cta-buttons">
+            <a href="VisualArts.html"><button class="btn">Go to Visual Arts</button></a>
+            <a href="PerformingArts.html"><button class="btn">Go to Performing Arts</button></a>
+        </div>
+    </header>
+
+    <section class="gallery">
+        <div class="grid">
+            <img src="artmuseum.PNG" alt="Art Museum">
+            <img src="fashionperformance.PNG" alt="Fashion Performance">
+            <img src="handflower.PNG" alt="Hand with Flowers">
+            <img src="abstractart.PNG" alt="Abstract Art">
+            <img src="singerperforming.PNG" alt="Singer Performing">
+            <img src="writingpaper.PNG" alt="Writing on Paper">
+        </div>
+    </section>
+
+    <section class="features">
+    <img src="prof2.jpeg" alt="Geometric Architecture">
+    <div class="feature-texts">
+        <h3>Feature #1: Interactive Workshops</h3>
+        <p>Join live and recorded workshops led by experienced artists, writers, and performers. Learn new skills, get expert tips, and connect with like-minded creatives.</p>
+        
+        <h3>Feature #2: Community Showcase</h3>
+        <p>Share your work with a vibrant community of artists and art lovers. Receive constructive feedback, gain exposure, and be inspired by diverse artistic expressions.</p>
+        
+        <h3>Feature #3: Exclusive Content</h3>
+        <p>Access exclusive articles, tutorials, and behind-the-scenes content from renowned artists and performers. Stay ahead in the world of arts with insightful resources.</p>
+    </div>
+</section>
+
+    <section class="explore-more">
+    <h2>Explore the World of Arts</h2>
+    <p>Utilize a diverse range of artistic expression in Visual Arts, Performing Arts, and Literary Arts.</p>
+    <a href="GetStarted.html"><button class="btn primary">Get Started</button></a>
+</section>
+
+    <section class="pricing">
+        <h2>Pricing Plan</h2>
+        <p>Choose the perfect plan for you</p>
+
+        <!-- Toggle Switch -->
+        <div class="toggle-container">
+            <input type="radio" id="monthly" name="billing" checked>
+            <label for="monthly" class="toggle-label">Monthly</label>
+
+            <input type="radio" id="yearly" name="billing">
+            <label for="yearly" class="toggle-label">Yearly</label>
+
+            <div class="toggle-slider"></div>
+        </div>
+
+        <div class="pricing-plans">
+            <div class="plan">
+                <h3>Basic Plan</h3>
+                <p>
+                    <span class="monthly-price">$20/mo</span>
+                    <span class="yearly-price">$200/year</span>
+                </p>
+                <ul>
+                    <li>Feature text goes here</li>
+                    <li>Feature text goes here</li>
+                    <li>Feature text goes here</li>
+                </ul>
+                <button>Get Started</button>
+            </div>
+
+            <div class="plan">
+                <h3>Business Plan</h3>
+                <p>
+                    <span class="monthly-price">$29/mo</span>
+                    <span class="yearly-price">$299/year</span>
+                </p>
+                <ul>
+                    <li>Feature text goes here</li>
+                    <li>Feature text goes here</li>
+                    <li>Feature text goes here</li>
+                </ul>
+                <button>Get Started</button>
+            </div>
+
+            <div class="plan">
+                <h3>Enterprise Plan</h3>
+                <p>
+                    <span class="monthly-price">$49/mo</span>
+                    <span class="yearly-price">$499/year</span>
+                </p>
+                <ul>
+                    <li>Feature text goes here</li>
+                    <li>Feature text goes here</li>
+                    <li>Feature text goes here</li>
+                </ul>
+                <button>Get Started</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>Testimonials</h2>
+        <p>Read what our users have to say about their experience with our arts website.</p>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <img src="prof1.jpeg" alt="User">
+                <div class="text">
+                    <h4>John Doe</h4>
+                    <p class="role">Art Enthusiast</p>
+                    <p>I love the variety of artworks showcased on this website. It’s a great platform for art lovers!</p>
+                </div>
+            </div>
+            <div class="testimonial">
+                <img src="prof2.jpeg" alt="User">
+                <div class="text">
+                    <h4>Jane Smith</h4>
+                    <p class="role">Artist</p>
+                    <p>As an artist, I appreciate the platform provided by this website to showcase my work to a wider audience.</p>
+                </div>
+            </div>
+            <div class="testimonial">
+                <img src="prof3.jpg" alt="User">
+                <div class="text">
+                    <h4>David Johnson</h4>
+                    <p class="role">Writer</p>
+                    <p>The literary arts section on this website is a treasure trove of inspiration for aspiring writers like me.</p>
+                </div>
+            </div>
+            <div class="testimonial">
+                <img src="prof4.jpg" alt="User">
+                <div class="text">
+                    <h4>Emily Brown</h4>
+                    <p class="role">Dancer</p>
+                    <p>The performing arts section has helped me discover new talents and performances that I wouldn’t have found elsewhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- FAQ Section -->
+<section class="faq-section">
+    <div class="faq-container">
+        <div class="faq-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Here are some common questions and answers. If you have more, feel free to ask!</p>
+        </div>
+
+        <!-- Sample FAQs -->
+        <button class="accordion">What is the purpose of this platform?</button>
+        <div class="panel"><p>This platform showcases various forms of art, including visual arts, performing arts, and literary arts.</p></div>
+
+        <button class="accordion">How can I join the community?</button>
+        <div class="panel"><p>You can join our community by signing up. Once a member, you can participate in events and activities.</p></div>
+
+        <button class="accordion">How do I submit my artwork?</button>
+        <div class="panel"><p>You can submit your artwork or writing via the submission portal available on your profile.</p></div>
+
+        <button class="accordion">Is there a fee to join?</button>
+        <div class="panel"><p>Joining is free! However, premium plans offer additional features.</p></div>
+
+        <!-- User Question Submission -->
+        <div class="faq-footer">
+            <h3>Still have a question?</h3>
+            <p>Submit your question below, and we'll get back to you!</p>
+            <form class="ask-question-form" id="faqForm">
+                <input type="text" id="userName" placeholder="Your Name" required>
+                <input type="email" id="userEmail" placeholder="Your Email" required>
+                <textarea id="userQuestion" placeholder="Ask your question here..." rows="4" required></textarea>
+                <button type="submit">Submit Question</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    // FAQ accordion toggle
+    document.querySelectorAll(".accordion").forEach(button => {
+        button.addEventListener("click", function () {
+            this.classList.toggle("active");
+            let panel = this.nextElementSibling;
+            panel.style.display = panel.style.display === "block" ? "none" : "block";
+        });
+    });
+
+    // Handle question submission
+    document.getElementById("faqForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        let name = document.getElementById("userName").value;
+        let email = document.getElementById("userEmail").value;
+        let question = document.getElementById("userQuestion").value;
+
+        alert(`Thank you, ${name}! Your question has been submitted.`);
+
+        // Reset form fields
+        document.getElementById("faqForm").reset();
+    });
+</script>
+
+    <footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>ArtisticVerse</h3>
+            <p>Celebrating the diversity of artistic expression.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="AboutUs.html">About Us</a></li>
+                <li><a href="GetStarted.html">Events</a></li>
+                <li><a href="GetStarted.html">Gallery</a></li>
+                <li><a href="AboutUs.html">Contact</a></li>
+            </ul>
+        </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-icons">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><i class="fas fa-envelope"></i> info@artisticverse.com</p>
+                <p><i class="fas fa-phone"></i> +1 (203) 123-4567</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Art Street, NY 10001</p>
+             </div>
+        </div>
+    </footer>
+</body>
+</html>

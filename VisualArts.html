@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World of Arts</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f0f5;
+            color: #333;
+            transition: all 0.3s ease-in-out;
+        }
+        header {
+            padding: 30px;
+            background: linear-gradient(135deg, #3a3a6f, #5e5ecf);
+            color: white;
+            text-align: center;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            border-bottom: 4px solid #2e2e6f;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+            background: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-bottom: 2px solid #e1e1e1;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            padding: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #3a3a6f;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            padding: 12px 18px;
+            border-radius: 6px;
+        }
+        nav ul li a:hover {
+            background: #3a3a6f;
+            color: white;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .art-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Align 3 images in a row */
+            gap: 30px;
+            justify-items: center; /* Align cards in the center */
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+        }
+        .art-card {
+            width: 300px;
+            height: 400px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        .art-card:hover {
+            transform: rotateY(180deg);
+        }
+        .art-image, .art-info {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    border: 5px solid #3a3a6f; /* Frame with a dark color */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Adds a soft shadow around the frame */
+}
+
+        .art-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .art-info {
+            background-color: #fff;
+            color: #333;
+            padding: 20px;
+            transform: rotateY(180deg);
+            text-align: center;
+        }
+        .art-info h3 a {
+            text-decoration: underline;
+            color: #3a3a6f;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .art-info h3 a:hover {
+            color: #ff5733;
+        }
+        .art-info p {
+            font-size: 14px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 30px;
+            margin-top: 40px;
+            color: #3a3a6f;
+        }
+        footer {
+            background: #0a0a23;
+            color: white;
+            padding: 40px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+            padding-right: 20px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 5px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons i {
+            font-size: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .art-section {
+                grid-template-columns: 1fr; /* Stack images in a single column on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Explore the World of Arts</h1>
+        <p>Immerse yourself in creativity, performances, and literature.</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="Home.html">Homepage</a></li>
+            <li><a href="PerformingArts.html">Performing Arts</a></li>
+            <li><a href="LiteraryArts.html">Literary Arts</a></li>
+            <li><a href="AboutUs.html">About Us</a></li>
+        </ul>
+    </nav>
+    
+    <h2>Visual Arts</h2>
+    <div class="art-section">
+        <div class="art-card">
+            <div class="art-image">
+                <img src="MonaLisa.jpg" alt="Mona Lisa">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://en.wikipedia.org/wiki/Mona_Lisa" target="_blank">Mona Lisa – Leonardo da Vinci</a></h3>
+                <p>Arguably the most famous painting in the world, Mona Lisa stands out for its enigmatic expression and revolutionary use of perspective. Painted between 1503 and 1506, this Renaissance masterpiece showcases Leonardo da Vinci’s mastery of sfumato, a technique that creates soft transitions between colors and tones. The subject's ambiguous smile has inspired endless interpretations, adding to its allure. Housed in the Louvre Museum in Paris, Mona Lisa continues to captivate millions with its mysterious charm and innovative techniques.You can read more by clicking the name..</p>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <div class="art-image">
+                <img src="StarryNight.jpg" alt="The Starry Night">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://en.wikipedia.org/wiki/The_Starry_Night" target="_blank">The Starry Night – Vincent van Gogh</a></h3>
+                <p>The Starry Night, painted in 1889 while Van Gogh was living in an asylum, captures the swirling energy of a night sky above a quiet village. Known for its bold brushstrokes and dynamic use of color, this work reflects Van Gogh's emotional turmoil and inner struggles. The vivid blues and yellows, as well as the exaggerated forms of the stars and moon, convey an intense emotional resonance, making this one of the most iconic works in modern art.You can read more by clicking the name..</p>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <div class="art-image">
+                <img src="ThePersistenceOfMemory.jpg" alt="The Persistence of Memory">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://en.wikipedia.org/wiki/The_Persistence_of_Memory" target="_blank">The Persistence of Memory – Salvador Dalí</a></h3>
+                <p>One of the defining works of surrealism, The Persistence of Memory challenges our perception of time. Painted in 1931, Dalí’s iconic melting clocks symbolize the fluidity and subjectivity of time, an idea that was revolutionary at the time. The dreamlike landscape, with distorted objects and ambiguous space, conveys the uncertainty and irrationality of the subconscious mind. This work remains a powerful exploration of time, memory, and the human experience.You can read more by clicking the name..</p>
+            </div>
+        </div>
+
+         <div class="art-card">
+            <div class="art-image">
+                <img src="David.jpg" alt="David">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://en.wikipedia.org/wiki/David_(Michelangelo)" target="_blank">David – Michelangelo</a></h3>
+                <p>Michelangelo’s David stands as an exemplary representation of Renaissance ideals, combining technical mastery with emotional depth. Completed in 1504, this marble sculpture depicts the biblical hero David poised before his battle with Goliath. Through intricate detailing and idealized anatomy, Michelangelo captures the strength, resolve, and youthful determination of the figure, making it a timeless symbol of human potential and artistic excellence.You can read more by clicking the name..</p>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <div class="art-image">
+                <img src="Guernica.jpg" alt="Guernica">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://en.wikipedia.org/wiki/Guernica_(Picasso)" target="_blank">Guernica – Pablo Picasso</a></h3>
+                <p>A monumental anti-war statement, Guernica is a stark depiction of the horrors of the Spanish Civil War, created in 1937. The monochromatic mural, with its fragmented figures and anguished expressions, embodies the chaos, pain, and suffering wrought by violence and conflict. Picasso’s use of surrealist elements and Cubist techniques transforms the tragedy of war into a visual language that remains universally relevant, making Guernica a symbol of peace and resistance.You can read more by clicking the name..</p>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <div class="art-image">
+                <img src="BirthofVenus.jpg" alt="The Birth of Venus">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://en.wikipedia.org/wiki/The_Birth_of_Venus" target="_blank">The Birth of Venus – Sandro Botticelli</a></h3>
+                <p>In this mythological painting, Venus, the goddess of love, emerges from the sea, a vision of beauty and grace. Created in the mid-1480s, The Birth of Venus represents idealized beauty and the human connection to nature and mythology. Botticelli’s delicate use of line and ethereal color elevates Venus as an emblem of classical ideals, while also capturing the Renaissance reverence for harmony, proportion, and divine beauty.You can read more by clicking the name..</p>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <div class="art-image">
+                <img src="TheGreatWave.jpg" alt="The Great Wave off Kanagawa">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://en.wikipedia.org/wiki/The_Great_Wave_off_Kanagawa" target="_blank">The Great Wave off Kanagawa – Katsushika Hokusai</a></h3>
+                <p>A stunning example of Japanese ukiyo-e woodblock printing, The Great Wave off Kanagawa (created in the early 1830s) captures a massive wave threatening to engulf boats, with Mount Fuji in the background. The print symbolizes nature’s overwhelming power and the vulnerability of humankind. The contrast between the chaotic, crashing wave and the tranquil, stoic mountain embodies themes of resilience and harmony amidst natural forces, making it one of the most recognized works in Japanese art.You can read more by clicking the name..</p>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <div class="art-image">
+                <img src="LasMeninas.jpg" alt="Las Meninas">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://en.wikipedia.org/wiki/Las_Meninas" target="_blank">Las Meninas – Diego Velázquez</a></h3>
+                <p>Las Meninas, painted in 1656, is a Baroque masterpiece that plays with perspective, reality, and the role of the viewer. Velázquez’s depiction of the Spanish royal family in their private moments, with the artist himself present in the scene, invites questions about the nature of art, representation, and identity. The painting’s complex composition and interplay of space, light, and reflection have made it one of the most studied works in the history of Western art.You can read more by clicking the name..</p>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <div class="art-image">
+                <img src="TheThinker.jpg" alt="The Thinker">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://en.wikipedia.org/wiki/The_Thinker" target="_blank">The Thinker – Auguste Rodin</a></h3>
+                <p>Originally conceived as part of a larger work, The Thinker (1880) is a bronze sculpture that has become a symbol of intellectual contemplation. The figure, seated with his chin resting on his hand, is immersed in deep thought, embodying the human struggle with complex ideas and existential questions. Over time, it has come to represent not only intellectual curiosity but also the broader human condition, making it one of Rodin’s most iconic works.You can read more by clicking the name..</p>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <div class="art-image">
+                <img src="TajMahal.jpeg" alt="Taj Mahal">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://en.wikipedia.org/wiki/Taj_Mahal" target="_blank">Taj Mahal – Commissioned by Shah Jahan</a></h3>
+                <p>The Taj Mahal, completed between 1632 and 1653, is a stunning example of Mughal architecture and a symbol of eternal love. Commissioned by Emperor Shah Jahan in memory of his beloved wife, Mumtaz Mahal, this white marble mausoleum is set amidst lush gardens, with intricate carvings and a reflective pool enhancing its beauty. The Taj Mahal blends Persian, Ottoman, and Indian architectural styles, making it a breathtaking and iconic masterpiece recognized around the world.You can read more by clicking the name.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>ArtisticVerse</h3>
+            <p>Celebrating the diversity of artistic expression.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="AboutUs.html">About Us</a></li>
+                <li><a href="GetStarted.html">Events</a></li>
+                <li><a href="GetStarted.html">Gallery</a></li>
+                <li><a href="AboutUs.html">Contact</a></li>
+            </ul>
+        </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-icons">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><i class="fas fa-envelope"></i> info@artisticverse.com</p>
+                <p><i class="fas fa-phone"></i> +1 (203) 123-4567</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Art Street, NY 10001</p>
+             </div>
+        </div>
+    </footer>
+</body>
+</html>

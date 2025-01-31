@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World of Arts</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f0f5;
+            color: #333;
+            transition: all 0.3s ease-in-out;
+        }
+        header {
+            padding: 30px;
+            background: linear-gradient(135deg, #3a3a6f, #5e5ecf);
+            color: white;
+            text-align: center;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            border-bottom: 4px solid #2e2e6f;
+        }
+         nav {
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+            background: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-bottom: 2px solid #e1e1e1;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            padding: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #3a3a6f;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            padding: 12px 18px;
+            border-radius: 6px;
+        }
+        nav ul li a:hover {
+            background: #3a3a6f;
+            color: white;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .art-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Three images per row */
+            gap: 30px;
+            justify-items: center;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+        }
+        .art-card {
+            width: 300px;
+            height: 400px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+        }
+        .art-card:hover {
+            transform: rotateY(180deg);
+        }
+        .art-image, .art-info {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            border: 5px solid #3a3a6f;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        .art-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .art-info {
+            background-color: #fff;
+            color: #333;
+            padding: 20px;
+            transform: rotateY(180deg);
+            text-align: center;
+        }
+        .art-info h3 a {
+            text-decoration: underline;
+            color: #3a3a6f;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .art-info h3 a:hover {
+            color: #ff5733;
+        }
+        .art-info p {
+            font-size: 14px;
+        }
+
+        footer {
+            background: #0a0a23;
+            color: white;
+            padding: 40px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+            padding-right: 20px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 5px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons i {
+            font-size: 20px;
+        }
+    </style>
+<body>
+    <header>
+        <h1>Explore the World of Arts</h1>
+        <p>Immerse yourself in creativity, performances, and literature.</p>
+     </header>
+    <nav>
+        <ul>
+            <li><a href="Home.html">Homepage</a></li>
+            <li><a href="VisualArts.html">Visual Arts</a></li>
+            <li><a href="LiteraryArts.html">Literary Arts</a></li>
+            <li><a href="AboutUs.html">About Us</a></li>
+        </ul>
+    </nav>  
+
+    <section id="performing-arts" class="art-section">
+        <!-- Row 1 -->
+        <div class="art-card">
+            <div class="art-image">
+                <img src="SwanLake.jpg" alt="Swan Lake">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://www.ballet.org.uk/production/swan-lake/" target="_blank">Swan Lake – Pyotr Ilyich Tchaikovsky</a></h3>
+                <p>This iconic ballet is a masterful blend of elegance, emotion, and drama, known for its exquisite choreography and the emotional depth of Tchaikovsky’s score. The story of a princess cursed to live as a swan is one of the most celebrated in ballet, with the contrasting roles of the White and Black Swan embodying themes of purity, betrayal, and the power of love. Swan Lake continues to captivate audiences worldwide for its beauty, grace, and tragic narrative. You can read more by clicking on the name...</p>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <div class="art-image">
+                <img src="Hamilton.jpg" alt="Hamilton">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://hamiltonmusical.com/" target="_blank">Hamilton – Lin-Manuel Miranda</a></h3>
+                <p>Miranda's groundbreaking musical revolutionized the Broadway stage by blending hip-hop, R&B, and traditional musical theatre styles to tell the story of Alexander Hamilton. Through rapid-fire lyrics and diverse casting, Hamilton reimagines American history in a way that is both relevant to today’s world and deeply reflective of the past. The musical explores themes of ambition, revolution, and the complexities of legacy, making it a cultural milestone in modern theater.You can read more by clicking on the name..</p>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <div class="art-image">
+                <img src="LesMiserables.png" alt="Les Misérables">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://www.lesmis.com/" target="_blank">Les Misérables – Claude-Michel Schönberg & Alain Boublil</a></h3>
+                <p>Based on Victor Hugo’s novel, this stirring musical brings to life the themes of justice, mercy, and redemption against the backdrop of post-revolutionary France. Through its unforgettable score and complex characters, Les Misérables examines social inequality, love, and sacrifice, making it one of the longest-running and most beloved musicals in history. The sweeping narrative and powerful songs continue to resonate with audiences across generations.You can read more by clicking on the name..</p>
+            </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="art-card">
+            <div class="art-image">
+                <img src="RomeoAndJuliet.jpg" alt="Romeo and Juliet">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://www.shakespeare.org.uk/explore-shakespeare/shakespedia/shakespeares-plays/romeo-and-juliet/" target="_blank">Romeo and Juliet – William Shakespeare</a></h3>
+                <p>Shakespeare’s timeless tragedy about the doomed love between two young people from feuding families has inspired countless adaptations in theater, film, and dance. The play’s exploration of love, fate, and societal conflict speaks to the universal human condition. Its passionate dialogue and tragic ending continue to make it one of the most performed plays in the world, and its themes resonate across various forms of artistic expression.You can read more by clicking on the name..</p>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <div class="art-image">
+                <img src="TheNutCracker.jpeg" alt="The Nutcracker">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://www.bolshoi.ru/en/performances/1032/" target="_blank">The Nutcracker – Pyotr Ilyich Tchaikovsky</a></h3>
+                <p>A festive holiday tradition, The Nutcracker ballet captures the magic of Christmas through Tchaikovsky’s enchanting score, featuring the beloved "Dance of the Sugar Plum Fairy" and other iconic moments. The ballet tells the story of a young girl’s journey through a dreamlike world of toy soldiers, sugarplums, and a battle with the Mouse King. Its festive charm and whimsical storyline have made it an enduring holiday favorite across the globe.You can read more by clicking on the name..</p>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <div class="art-image">
+                <img src="ThePhantomoftheOpera.jpg" alt="The Phantom of the Opera">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://www.thephantomoftheopera.com/" target="_blank">The Phantom of the Opera – Andrew Lloyd Webber</a></h3>
+                <p>A romantic and mysterious tale set in the grandeur of the Paris Opera House, The Phantom of the Opera is one of the most successful musicals in history. With its haunting melodies, such as the famous “The Music of the Night,” the musical explores themes of love, obsession, and isolation. The Phantom’s complex character, torn between love and vengeance, adds emotional depth to this lavish and timeless production that has captured audiences for decades.You can read more by clicking on the name..</p>
+            </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="art-card">
+            <div class="art-image">
+                <img src="MichaelThriller.jpg" alt="Michael Jackson's Thriller">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://www.michaeljackson.com/" target="_blank">Michael Jackson’s Thriller Performance – Michael Jackson</a></h3>
+                <p>Michael Jackson’s music video for “Thriller” redefined the concept of a music video, blending narrative storytelling, groundbreaking choreography, and cinematic visuals. The performance and video’s iconic zombie dance, along with Jackson’s electric stage presence, revolutionized pop music and set a new standard for visual artistry in the genre. "Thriller" remains one of the most influential cultural moments in the history of pop music.You can read more by clicking on the name..</p>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <div class="art-image">
+                <img src="TheBeatles.jpg" alt="The Beatles' Ed Sullivan Show">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://www.thebeatles.com/" target="_blank">The Beatles' Ed Sullivan Show Performance – The Beatles</a></h3>
+                <p>This performance marked the dawn of Beatlemania in America, catapulting The Beatles to global superstardom. Their appearance on The Ed Sullivan Show in 1964 introduced their infectious energy, charm, and revolutionary musical style to an American audience, forever changing the landscape of popular music. It sparked the British Invasion and solidified the Beatles as one of the greatest and most influential bands in history.You can read more by clicking on the name..</p>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <div class="art-image">
+                <img src="Beychella.jpeg" alt="Beyoncé’s Coachella Performance">
+            </div>
+            <div class="art-info">
+                <h3><a href="https://www.beyonce.com/" target="_blank">Beyoncé’s Coachella Performance (Beychella) – Beyoncé</a></h3>
+                <p>Beyoncé’s 2018 Coachella performance, widely dubbed “Beychella,” was a stunning celebration of Black culture and history. Featuring a full marching band, powerful visuals, and an expertly curated setlist, her performance was not only a musical triumph but a statement of empowerment. Beyoncé’s meticulous choreography, vocal precision, and commanding stage presence raised the bar for live performances, making this one of the most iconic festival performances in recent memory.You can read more by clicking on the name..</p>
+            </div>
+        </div>
+    </section>
+
+ <footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>ArtisticVerse</h3>
+            <p>Celebrating the diversity of artistic expression.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="AboutUs.html">About Us</a></li>
+                <li><a href="GetStarted.html">Events</a></li>
+                <li><a href="GetStarted.html">Gallery</a></li>
+                <li><a href="AboutUs.html">Contact</a></li>
+            </ul>
+        </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-icons">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><i class="fas fa-envelope"></i> info@artisticverse.com</p>
+                <p><i class="fas fa-phone"></i> +1 (203) 123-4567</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Art Street, NY 10001</p>
+             </div>
+        </div>
+    </footer>
+</body>
+</html>

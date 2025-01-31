@@ -1,0 +1,7 @@
+Home
+VisualArts
+PerformingArts
+LiteraryArts
+SignIn
+SignUp
+GetStarted

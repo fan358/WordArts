@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Literary Arts</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px 0;
+            border-bottom: 2px solid #ccc;
+        }
+        .tabs a {
+            font-size: 18px;
+            text-decoration: none;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+        .tabs a:hover {
+            border-bottom: 2px solid #4a3aff;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+        .active-tab {
+            display: block;
+        }
+        .literary-image {
+    width: 100%;       /* Makes the image responsive */
+    max-width: 300px;  /* Sets a maximum width for the image */
+    height: auto;      /* Maintains the aspect ratio */
+    margin: 0 auto;    /* Centers the image */
+    display: block;
+}
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .events, .artists, .contests {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        .event, .artist-card, .contest-card {
+            background: white;
+            margin: 10px auto;
+            padding: 15px;
+            width: 80%;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        /* Adjust artist card layout */
+        .artist-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 70%;
+        }
+        .artist-card img {
+            width: 150px; /* Fix image size */
+            height: auto;
+            border-radius: 8px;
+        }
+        .artist-card .description {
+            flex: 1;
+            margin-left: 20px;
+        }
+        /* Fix contest image size */
+        .contest-card img {
+            width: 300px; /* Set fixed width */
+            height: auto;
+            border-radius: 8px;
+        }
+        .contest-details {
+            display: none;
+            background: #f4f4f9;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .contest-card:hover .contest-details {
+            display: block;
+        }
+        .contest-details h4 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+        .contest-details p {
+            font-size: 14px;
+        }
+        .contest-details .btn {
+            background-color: #4a3aff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contest-details .btn:hover {
+            background-color: #3a2aa8;
+        }
+
+        .newsletter {
+            background: #4a3aff;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .newsletter input {
+            padding: 10px;
+            width: 200px;
+            margin-right: 10px;
+        }
+        .newsletter button {
+            padding: 10px 15px;
+            background: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        footer {
+            background: #0a0a23;
+            color: white;
+            padding: 40px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+            padding-right: 20px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 5px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons i {
+            font-size: 20px;
+        }
+        /* Existing styles */
+        .post-form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .post-form input, .post-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .post-form button {
+            background-color: #4a3aff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .post-form button:hover {
+            background-color: #3a2aa8;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>World Of Arts</h1>
+    </header>
+    
+    <section class="tabs">
+        <a href="javascript:void(0)" onclick="showTab('poetry')">Poetry</a>
+        <a href="javascript:void(0)" onclick="showTab('prose')">Prose</a>
+        <a href="javascript:void(0)" onclick="showTab('drama')">Drama</a>
+        <a href="javascript:void(0)" onclick="showTab('essays')">Essays</a>
+    </section>
+    
+    <section id="poetry" class="tab-content">
+    <div class="literary-arts">
+        <div class="card">
+            <h3>Poetry Work 1</h3>
+            <p>Beautiful rhythmic poem by famous poet</p>
+            <img src="Poetry.jpg" alt="Poetry Work 1" class="literary-image">
+            <div class="quote">"The beauty of life is captured in every verse."</div>
+            <p class="author-bio">By William Wordsworth, known for his mastery of nature-themed poetry.</p>
+            <div class="related-works">
+                <p>Related Works: <a href="#">The Prelude</a>, <a href="#">I Wandered Lonely as a Cloud</a></p>
+              </div>
+            </div>
+            <!-- Post Submission Form -->
+            <div class="post-form">
+                <h3>Submit Your Own Poetry</h3>
+                <input type="text" id="poetry-title" placeholder="Enter poem title" required>
+                <textarea id="poetry-content" rows="5" placeholder="Write your poem here" required></textarea>
+                <button onclick="submitPoetry()">Submit Poetry</button>
+            </div>
+        </div>
+    </section>
+  
+<section id="prose" class="tab-content">
+    <div class="literary-arts">
+        <div class="card">
+            <h3>Prose Work 1</h3>
+            <p>Engaging story by renowned author</p>
+            <img src="Prose.jpg" alt="Prose Work 1" class="literary-image">
+            <p class="quote">"A story can change the world, one word at a time."</p>
+            <p class="author-bio">By Leo Tolstoy, an author known for his deep philosophical prose.</p>
+            <div class="related-works">
+                <p>Related Works: <a href="#">War and Peace</a>, <a href="#">Anna Karenina</a></p>
+             </div>
+            </div>
+            <!-- Post Submission Form -->
+            <div class="post-form">
+                <h3>Submit Your Own Prose</h3>
+                <input type="text" id="prose-title" placeholder="Enter prose title" required>
+                <textarea id="prose-content" rows="5" placeholder="Write your prose here" required></textarea>
+                <button onclick="submitProse()">Submit Prose</button>
+            </div>
+        </div>
+    </section>
+
+
+<section id="drama" class="tab-content">
+    <div class="literary-arts">
+        <div class="card">
+            <h3>Drama Work 1</h3>
+            <p>Classic theatrical play</p>
+            <img src="Drama.jpg" alt="Drama Work 1" class="literary-image">
+            <p class="quote">"The stage is the mirror of human nature, reflecting both our vices and virtues."</p>
+            <p class="author-bio">By William Shakespeare, the master of drama and tragedy.</p>
+            <div class="related-works">
+                <p>Related Works: <a href="#">Hamlet</a>, <a href="#">Macbeth</a></p>
+              </div>
+            </div>
+            <!-- Post Submission Form -->
+            <div class="post-form">
+                <h3>Submit Your Own Drama</h3>
+                <input type="text" id="prose-title" placeholder="Enter prose title" required>
+                <textarea id="prose-content" rows="5" placeholder="Write your prose here" required></textarea>
+                <button onclick="submitProse()">Submit Prose</button>
+            </div>
+        </div>
+    </section>
+
+
+<section id="essays" class="tab-content">
+    <div class="literary-arts">
+        <div class="card">
+            <h3>Essay Work 1</h3>
+            <p>Thought-provoking essay by an insightful writer</p>
+            <img src="Essay.png" alt="Essay Work 1" class="literary-image">
+            <p class="quote">"Essay writing is not just about conveying information, but also about sparking thought."</p>
+            <p class="author-bio">By Ralph Waldo Emerson, known for his philosophical essays on self-reliance and nature.</p>
+            <div class="related-works">
+                <p>Related Works: <a href="#">Self-Reliance</a>, <a href="#">Nature</a></p>
+            </div>
+            </div>
+            <!-- Post Submission Form -->
+            <div class="post-form">
+                <h3>Submit Your Own Essay</h3>
+                <input type="text" id="prose-title" placeholder="Enter prose title" required>
+                <textarea id="prose-content" rows="5" placeholder="Write your prose here" required></textarea>
+                <button onclick="submitProse()">Submit Prose</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function submitPoetry() {
+            const title = document.getElementById('poetry-title').value;
+            const content = document.getElementById('poetry-content').value;
+            if (title && content) {
+                alert(`Poetry submitted: ${title} - ${content}`);
+                // Handle form submission (e.g., save data to a database or API)
+            } else {
+                alert('Please fill in both fields!');
+            }
+        }
+
+     function submitProse() {
+            const title = document.getElementById('prose-title').value;
+            const content = document.getElementById('prose-content').value;
+            if (title && content) {
+                alert(`Prose submitted: ${title} - ${content}`);
+                // Handle form submission (e.g., save data to a database or API)
+            } else {
+                alert('Please fill in both fields!');
+            }
+        }
+        
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active-tab'));
+            document.getElementById(tabName).classList.add('active-tab');
+        }
+    </script>
+
+    <section class="artists">
+        <h2>Famous Artists</h2>
+        <div class="artist-card">
+            <div class="description">
+                <h3>Leonardo da Vinci</h3>
+                <p>Leonardo da Vinci (1452-1519) was an Italian polymath and one of the most influential figures of the Renaissance. His works, such as the "Mona Lisa" and "The Last Supper," are iconic. Da Vinci was not only a painter but also a scientist, engineer, and inventor, contributing to fields ranging from anatomy to flight mechanics. His curiosity and creativity have made him a symbol of the Renaissance ideal.</p>
+            </div>
+            <img src="DaVinci.png" alt="Leonardo da Vinci">
+        </div>
+        <div class="artist-card">
+            <div class="description">
+                <h3>Vincent van Gogh</h3>
+                <p>Vincent van Gogh (1853-1890) was a Dutch Post-Impressionist painter known for his bold, emotional use of color and dramatic brushwork. His famous works, including "Starry Night" and "Sunflowers," are admired for their vivid expression of personal emotion. Despite struggling with mental illness and poverty throughout his life, his work has had a lasting impact on modern art.</p>
+            </div>
+            <img src="VincentVanGogh.jpg" alt="Vincent van Gogh">
+        </div>
+        <div class="artist-card">
+            <div class="description">
+                <h3>Pablo Picasso</h3>
+                <p>Pablo Picasso (1881-1973) was a Spanish painter and sculptor who is widely regarded as one of the most influential artists of the 20th century. He co-founded the Cubist movement, invented constructed sculpture, and contributed to the development of modern art. His famous works, including "Guernica" and "Les Demoiselles d'Avignon," explore a wide range of styles and themes.</p>
+            </div>
+            <img src="PabloPicasso.jpg" alt="Pablo Picasso">
+        </div>
+    </section>
+
+
+    <section class="contests">
+        <h2>Upcoming Art Contests</h2>
+        <div class="contest-card">
+            <h3>International Art Competition</h3>
+            <p>Show off your artistic skills and win amazing prizes!</p>
+            <img src="art_contest.jpg" alt="Art Contest">
+            <div class="contest-details">
+                <h4>Details</h4>
+                <p><strong>Place:</strong> New York City</p>
+                <p><strong>Time:</strong> March 15, 2025</p>
+                <p><strong>Winning Prize:</strong> $5,000</p>
+                <button class="btn">Join Now</button>
+            </div>
+        </div>
+        <div class="contest-card">
+            <h3>Creative Design Contest</h3>
+            <p>Unleash your creativity and win exclusive rewards!</p>
+            <img src="design_contest.jpg" alt="Design Contest">
+            <div class="contest-details">
+                <h4>Details</h4>
+                <p><strong>Place:</strong> Online</p>
+                <p><strong>Time:</strong> April 1, 2025</p>
+                <p><strong>Winning Prize:</strong> $2,000</p>
+                <button class="btn">Join Now</button>
+            </div>
+        </div>
+        <div class="contest-card">
+            <h3>Art & Culture Festival</h3>
+            <p>Compete in an international art & culture exhibition.</p>
+            <img src="Exhibition.jpg" alt="Art Festival">
+            <div class="contest-details">
+                <h4>Details</h4>
+                <p><strong>Place:</strong> Paris, France</p>
+                <p><strong>Time:</strong> June 20, 2025</p>
+                <p><strong>Winning Prize:</strong> $10,000</p>
+                <button class="btn">Join Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+    <h2>Stay Updated</h2>
+    <p>Subscribe to our newsletter for the latest updates on arts and events.</p>
+    <input type="email" id="email" placeholder="Enter your email" required>
+    <button onclick="subscribe()">Subscribe</button>
+    <p id="success-message" style="display: none; color: green;">You have successfully subscribed!</p>
+</section>
+
+<script>
+    function subscribe() {
+        var email = document.getElementById('email').value;
+        if (email) {
+            // Here, you would typically handle the form submission (e.g., send the email to a server)
+            document.getElementById('success-message').style.display = 'block'; // Display success message
+        } else {
+            alert("Please enter a valid email address.");
+        }
+    }
+</script>
+
+    <footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>ArtisticVerse</h3>
+            <p>Celebrating the diversity of artistic expression.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="AboutUs.html">About Us</a></li>
+                <li><a href="GetStarted.html">Events</a></li>
+                <li><a href="GetStarted.html">Gallery</a></li>
+                <li><a href="AboutUs.html">Contact</a></li>
+            </ul>
+        </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-icons">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><i class="fas fa-envelope"></i> info@artisticverse.com</p>
+                <p><i class="fas fa-phone"></i> +1 (203) 123-4567</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Art Street, NY 10001</p>
+             </div>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active-tab'));
+            document.getElementById(tabName).classList.add('active-tab');
+        }
+    </script>
+</body>
+</html>
